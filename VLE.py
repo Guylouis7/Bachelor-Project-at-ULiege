@@ -165,51 +165,16 @@ volume_percentage_interp_m = sc.interpolate.interp1d(mass_percentage,volume_perc
 
 """
 
-Defininition of the system constants and initial conditions
+Defininition of the system constants and initial conditions : IC
 
 
 """
 volumique_percentage_init = 15#%
 
-rho_real_dico = { 12 : 1040.48, 13 : 1033.9952, 14 : 1027.52, 15 : 1021.0445, 16: 1013.93, 17 : 1007.45 } # kg/m³
-V_eth_real_init_dico = { 12: 14.48, 13 : 15.65, 14: 16.82, 15: 17.98, 16: 19.27, 17:20.44} #L
-V0_tripartite_dico = {12 : 120.1982017, 13: 120.1879247, 14:120.1766179, 15: 120.164653, 16: 120.1511136, 17 :120.1387561} #L
-
-
-rho_real = rho_real_dico[volumique_percentage_init]
-V0_tripartite = V0_tripartite_dico[volumique_percentage_init]/1000 #m³
-
-"""
-We will suppose a homegnous mixture
-"""
-
-V_batch = 0.008 #m³ total volume in the still
-ratio = V_batch / V0_tripartite #to scale down to our volume
 
 MM_w = 18.02 #[kg/kmol]
 MM_eth = 46.07 #[kg/kmol]
 rho_eth = 789 #[kg/m³]
-
-"""
-mass_water_init = 95.3*ratio #[kg] 
-mole_water_init = mass_water_init/MM_w #[kmol]
-
-V_eth_init = ratio*V_eth_real_init_dico[volumique_percentage_init]/1000 #m³
-mole_eth_init = V_eth_init*rho_eth/MM_eth #[kmol]
-
-P = 101325 # [Pa]
-
-V_cut = 0.0# [m³] volume of distillate collected before restarting the calculation (0.0 for no cut)
-
-L0 = mole_eth_init + mole_water_init #kmol initial amount of liquid in the still that will react
-
-x_eth_init = mole_eth_init / L0 # initial molar fraction of ethanol in the liquid phase
-print(x_eth_init)
-V0_binary = (mass_water_init + mole_eth_init*MM_eth)/rho_mixt_interp_n(x_eth_init*100) #m³ initial volume of liquid water and ethanol 
-"""
-
-
-"""New IC see excel file"""
 
 L0 = 0.200449143
 
@@ -513,4 +478,5 @@ if __name__ == "__main__" :
                 "time_needed\n"
                 "v_eth/v_eth_init\n"
                 "all")
+
     
